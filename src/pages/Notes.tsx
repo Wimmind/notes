@@ -1,11 +1,19 @@
 import React from "react";
+import { useTypedSelector } from "../hooks/useTypedSelector";
+import NoteCard from "../components/NoteCard";
+import Pagination from '@mui/material/Pagination';
 
 const Records: React.FC = () => {
+  const { notes } = useTypedSelector((state) => state.notes);
 
   return (
-    <div>
-      Записи
-    </div>
+    <>
+      {
+        notes.map((item, key) => (
+          <NoteCard note={item} key={key} />
+        ))
+      }
+    </>
   );
 }
 

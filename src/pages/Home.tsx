@@ -1,12 +1,13 @@
 import React from "react";
-import { useState } from "react";
 import NoteCreationForm from '../components/NoteCreationForm';
 import { Note } from '../types';
-import Modal from '@mui/material/Modal';
+import { useActions } from "../hooks/useActions";
 
 const Home: React.FC = () => {
-  const saveNote = (note: Note) => {
+  const { addNote } = useActions();
 
+  const saveNote = (note: Note) => {
+    addNote(note)
   }
 
   return (
