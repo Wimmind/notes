@@ -3,21 +3,19 @@ import { CssBaseline, AppBar, Tabs, Tab } from '@mui/material';
 import { Link } from "react-router-dom";
 import { Routes, Route, useLocation } from "react-router-dom";
 
-import Notes from "./pages/Notes";
 import Home from "./pages/Home";
-import Note from "./pages/Note";
+import Notes from "./pages/Notes";
 
 const tabs = [
   '/',
-  '/notes'
+  '/notes/'
 ]
 
 const App: React.FC = () => {
   const location = useLocation();
-  const [value, setValue] = useState(tabs.findIndex(item => item === location.pathname));
-
+  const [tabIndex, setTabIndex] = useState(tabs.findIndex(item => item === location.pathname));
   const handleChange = (event: any, newValue: any) => {
-    setValue(newValue);
+    setTabIndex(newValue);
   };
 
   return (
@@ -28,19 +26,16 @@ const App: React.FC = () => {
           indicatorColor="secondary"
           textColor="inherit"
           variant="fullWidth"
-          value={value}
+          value={tabIndex}
           onChange={handleChange}>
           <Tab component={Link} to='/' label="Создание записи" />
-          <Tab component={Link} to='/notes' label="Записи" />
+          <Tab component={Link} to='/notes/' label="Записи" />
         </Tabs>
       </AppBar>
       <main className="wrapper">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/notes" element={<Notes />} />
-          <Route path="users">
-            <Route path=":id" element={<Note />} />
-          </Route>
+          <Route path="/notes/" element={<Notes />} />
         </Routes>
       </main>
     </>

@@ -33,7 +33,11 @@ const NoteCreationForm: React.FC<NoteCreationFormProps> = ({ onSubmit }) => {
   useEffect(() => {
     const getTimeZones = async () => {
       const timezones = await requestService.getTimeZones();
-      setTzList(timezones);
+      if (timezones) {
+        setTzList(timezones);
+      } else {
+        alert('Ошибка сервера, перезагрузите страницу')
+      }
     };
     getTimeZones();
   }, []);

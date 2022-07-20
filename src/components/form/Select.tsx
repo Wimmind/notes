@@ -1,5 +1,5 @@
 import React from "react";
-import { InputLabel, MenuItem, FormControl, SelectProps, Select as SelectMui, SelectChangeEvent } from '@mui/material';
+import { InputLabel, MenuItem, FormControl, SelectProps, Select as SelectMui } from '@mui/material';
 import { FormField } from '../../types';
 
 interface CustomSelectProps extends SelectProps {
